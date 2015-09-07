@@ -1,55 +1,28 @@
-var accordian = angular.module("accordionApp",[]);
 var grid = angular.module("gridModule",["kendo.directives"]);
 angular.module("AngularModule",["gridModule","accordionApp"]);
-accordian.directive('accordion', function () {
-  return {
-    restrict:'E',
-    transclude:false,
-    controller:'AccordionController',
-    templateUrl:'accordion.html'
-  }
+var accordian = angular.module("accordionApp",[]);
+accordian.controller("SummaryController" , function($scope){
+	
 });
 
-accordian.directive('activeTab', function () {
-	return function(scope,element,attributes){
-		element.bind("click", function(){
-			if(!element.hasClass("active")){
-				element.addClass("active");
-				element.find("i.fa-angle-right").removeClass("fa-angle-right").addClass("fa-angle-down");
-			}
-			else{
-				element.removeClass("active");
-				element.find("i.fa-angle-down").removeClass("fa-angle-down").addClass("fa-angle-right");
-			}
-		});
-	}
-});
-
-accordian.controller("AccordionController" , function($scope){
-	$scope.itemInfo = [
-							{"itemType":"Required" ,"itemIcon":"fa-asterisk"},
-							{"itemType":"Recommended" ,"itemIcon":"fa-circle-thin"},
-							{"itemType":"Optional" ,"itemIcon":"fa-cog"}
-					   ];
-	$scope.init = function () {
-		$('.accr-menu .item-icon').click(function(){
-			$(this).find('.menu-dropdown').toggle();
-		});
-		$('.accr-menu .item-icon li .fancy-check').click(function(){
-			if( $(this).val() == "all" ) {
-				if( $(this).is(':checked') ) {
-					$(this).closest('.accr-menu').find('.fancy-check').prop("checked",true);
-					console.log($(this).is(':checked'))
-				} else {
-					$(this).closest('.accr-menu').find('.fancy-check').prop("checked",false);
-				}
-			}
-		});
-	}
-});
 grid.controller("GridCtrl", function($scope){
 	$scope.mainGridOptions = {
-		dataSource: [ { ProcessId: "123456789876456",
+		dataSource: [ 
+					{ ProcessId: "123456789876456",
+					 Description: "Description Info Here",
+					 Originator: "Originator Name",
+					 Concept: "Offer",
+					 Type: "Originator Name",
+					 DateTime: "Originator Name"
+					},
+					{ ProcessId: "123456789876456",
+					 Description: "Description Info Here",
+					 Originator: "Originator Name",
+					 Concept: "Offer",
+					 Type: "Originator Name",
+					 DateTime: "Originator Name"
+					},
+					{ ProcessId: "123456789876456",
 					 Description: "Description Info Here",
 					 Originator: "Originator Name",
 					 Concept: "Offer",
@@ -85,16 +58,21 @@ grid.controller("GridCtrl", function($scope){
 			refresh: true,
 			pageSizes: false,
 			buttonCount: 2,
-			pageSize: 2,
+			pageSize: 5,
 			info: true,
 			messages: {
-			  display: " {2}"
+			  display: " {5}"
 			}
 		},
 		dataBound: function() {
 			this.expandRow(this.tbody.find("tr.k-master-row").first());
 		},
-		columns: [{
+		columns: [
+		{
+			title: "<a class='k-link amr' href='#'><span>A</span> <span>M</span> <span>R</span></a>",
+			template: "<div class='amr-checks'><input type='checkbox' class='scheck'> <input type='checkbox' class='scheck'> <input type='checkbox' class='scheck'></div>",
+		},
+		{
 			field: "ProcessId",
 			title: "ProcessId",
 			width: 200
@@ -123,8 +101,22 @@ grid.controller("GridCtrl", function($scope){
 				$('#details-grid .k-grid-header tr th:first-child').prepend($pagerRefresh);
 
 				$('.k-pager-wrap').wrapInner('<div class="k-pager-innerwrap"></div>');
+				var grid = $('#details-grid');
+				grid.on('click','.scheck',function(){
+					if( this.checked ){
+						$(this).closest('tr').addClass('active');
+						$('.approval-buttons').addClass('active');
+					} else {
+						$(this).closest('tr').removeClass('active');
+						if( $('.scheck:checked').length == 0 ) {
+							$('.approval-buttons').removeClass('active');
+						}
+					}
+				})
 		}
 	};
+
+	
 });
 
 

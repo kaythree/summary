@@ -1,18 +1,18 @@
 <!doctype html>
 <html ng-app="AngularModule">
 	<head>
-		<title> Accordion </title>
+		<title> Summary </title>
 
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" />
-		<link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.common-material.min.css" />
 	    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.material.min.css" />
 	    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.dataviz.min.css" />
 	    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.dataviz.material.min.css" />	
 	    <link rel="stylesheet" href="../css/style.css" />
+	    <link rel="stylesheet" href="../css/gridStyle.css" />
 
 	</head>
-	<body ng-controller="AccordionController" ng-init="init()">
+	<body ng-controller="SummaryController" ng-init="init()">
 		<div class="main-container" id="summary-page">
 			<h2 class="page-title">Summary</h2>
 			<div class="content-container">
@@ -45,17 +45,63 @@
 						</div>
 					</div>
 				</div>
-				<div id="details-grid">
+				<div id="details-grid" class="mytask">
 					<div ng-controller="GridCtrl">
 						<kendo-grid options="mainGridOptions">
+							<div k-detail-template>
+				                <kendo-tabstrip>
+					                <ul class="subGridMenu">
+					                    <li>Comment</li>
+					                    <li class="k-state-active">Attributes</li>
+					                </ul>
+					                <div>
+					                	<p>test</p>
+					                    <div kendo-grid k-options="detailGridOptions(dataItem)"></div>
+					                </div>
+					                <div>
+					                    <ul>
+					                        <li>test</li>
+					                        <li>test1</li>
+					                        <li>test2{{dataItem.TaskId}}</li>
+					                        <li>test3{{dataItem.HomePhone}}</li>
+					                    </ul>
+					                </div>
+				                </kendo-tabstrip>
+				            </div>
 						</kendo-grid>
 					</div>
 				</div>
+				<div class="approval-buttons">
+					<a href="#" class="app-button approve">
+						<span class="app-text">Submit</span>
+					</a>
+				</div>
 			</div>
 		</div>	
+		<script type="text/x-kendo-template" id="detail-template">
+		     <div class="tabstrip">
+        <ul>
+            <li class="k-state-active">Contact Information</li>
+            <li>Orders</li>
+      </ul>
+
+        <div>
+            <div class='employee-details'>
+                First Name: <input type="text" data-bind="value:FirstName"/><br />
+                Last Name: <input type="text" data-bind="value:LastName"/><br />
+                Country: <input type="text" data-bind="value:Country"/><br />   
+		      </div>
+      </div>
+        <div>
+            <div class="orders"></div>
+      </div>
+      </div>
+	    </script>
+
 		<script type="text/javascript" src="../js/libs/jquery-2.1.0.min.js"></script>
 		<script type="text/javascript" src="../js/libs/angular.js"></script>
 		<script src="http://cdn.kendostatic.com/2015.1.429/js/kendo.all.min.js"></script>
 		<script type="text/javascript" src="../js/script.js"></script>
 	</body>
 </html>
+
