@@ -10,6 +10,7 @@ body{
     border: 1px solid #eee;
     background: #FDFDFD;
     overflow: hidden;
+    clear: both;
 }
 #summary-page #details-grid {
     clear: both;
@@ -289,4 +290,27 @@ body{
     border-bottom: 1px solid #FBFCF9;
 }
 
+#summary-page .page-title {
+    display: inline-block;
+    float: left;
+}
 
+#summary-page .amr-block {
+    float: right;
+    margin-top:5px;
+}
+
+#summary-page .amr-block li {
+    display: inline-block;
+    margin: 10px;
+    color: #aaa;
+}
+
+#summary-page .amr-block .amr-icon {
+    border: 1px solid #ccc;
+    padding: 0px 3px;
+}
+
+#summary-page .k-grid-header th.k-header .k-icon {
+	background-position: 0 -35px;
+}

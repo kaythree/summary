@@ -51,9 +51,12 @@ grid.controller("GridCtrl", function($scope){
 					 DateTime: "Originator Name"
 					}],
 		height: 180,
-		sortable: true,
+		sortable: false,
 		selectable: "row",
 		scrollable: false,
+		filterable: {
+			extra: false
+        },
 		pageable: {
 			refresh: true,
 			pageSizes: false,
@@ -113,7 +116,23 @@ grid.controller("GridCtrl", function($scope){
 						}
 					}
 				})
-		}
+		},
+		createMultiSelect: function(element) {
+          element.removeAttr("data-bind");
+
+          element.kendoMultiSelect({
+            dataSource: names,
+            change: function(e) {
+              var filter = { logic: "or", filters: [] };
+              var values = this.value();
+              $.each(values, function(i, v) {
+                filter.filters.push({field: "name", operator: "eq", value: v });
+              });
+              console.log(this.dataSource.data());
+              dataSource.filter(filter);
+            }
+          });
+        }
 	};
 
 	
