@@ -65,7 +65,7 @@
 							<div k-detail-template>
 				                <kendo-tabstrip>
 					                <ul class="subGridMenu">
-					                    <li>Comment</li>
+					                    <li class="comment-btn">Comment</li>
 					                    <li class="k-state-active">Attributes</li>
 					                </ul>
 					                <div>
@@ -92,26 +92,21 @@
 				</div>
 			</div>
 		</div>	
-		<script type="text/x-kendo-template" id="detail-template">
-		     <div class="tabstrip">
-        <ul>
-            <li class="k-state-active">Contact Information</li>
-            <li>Orders</li>
-      </ul>
-
-        <div>
-            <div class='employee-details'>
-                First Name: <input type="text" data-bind="value:FirstName"/><br />
-                Last Name: <input type="text" data-bind="value:LastName"/><br />
-                Country: <input type="text" data-bind="value:Country"/><br />   
-		      </div>
-      </div>
-        <div>
-            <div class="orders"></div>
-      </div>
-      </div>
-	    </script>
-
+		<div class="sm-overlay"></div>
+		<div class="sum-lightbox commentbox">
+			<div class="header">
+				<h2>Modify</h2>
+			</div>
+			<div class="content">
+				<p><i class="fa fa-pencil"></i> Comment</p>
+				<textarea placeholder="Please type your comment"></textarea>
+				<p class="char-len">Max 255 characters</p>
+				<div class="buttons">
+					<button class="active">Modify</button>
+					<button>Cancel</button>
+				</div>
+			</div>
+		</div>	
 		<script type="text/javascript" src="../js/libs/jquery-2.1.0.min.js"></script>
 		<script type="text/javascript" src="../js/libs/angular.js"></script>
 		<script src="http://cdn.kendostatic.com/2015.1.429/js/kendo.all.min.js"></script>

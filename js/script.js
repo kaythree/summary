@@ -6,6 +6,7 @@ accordian.controller("SummaryController" , function($scope){
 });
 
 grid.controller("GridCtrl", function($scope){
+	$scope.tooltipOpt = {"a":"Approve", "m":"Modify", "r":"Reject", "position":"top"};
 	$scope.mainGridOptions = {
 		dataSource: [ 
 					{ ProcessId: "123456789876456",
@@ -72,7 +73,7 @@ grid.controller("GridCtrl", function($scope){
 		},
 		columns: [
 		{
-			title: "<a class='k-link amr' href='#'><span>A</span> <span>M</span> <span>R</span></a>",
+			title: "<a class='k-link amr' href='#'><span kendo-tooltip k-content='tooltipOpt.a' k-position='tooltipOpt.position'>A</span> <span kendo-tooltip k-content='tooltipOpt.m' k-position='tooltipOpt.position'>M</span> <span kendo-tooltip k-content='tooltipOpt.r' k-position='tooltipOpt.position'>R</span></a>",
 			template: "<div class='amr-checks'><input type='checkbox' class='scheck'> <input type='checkbox' class='scheck'> <input type='checkbox' class='scheck'></div>",
 		},
 		{
@@ -115,24 +116,15 @@ grid.controller("GridCtrl", function($scope){
 							$('.approval-buttons').removeClass('active');
 						}
 					}
-				})
-		},
-		createMultiSelect: function(element) {
-          element.removeAttr("data-bind");
-
-          element.kendoMultiSelect({
-            dataSource: names,
-            change: function(e) {
-              var filter = { logic: "or", filters: [] };
-              var values = this.value();
-              $.each(values, function(i, v) {
-                filter.filters.push({field: "name", operator: "eq", value: v });
-              });
-              console.log(this.dataSource.data());
-              dataSource.filter(filter);
-            }
-          });
-        }
+				});
+				
+				grid.on('click','.comment-btn',function(){		
+					$('.commentbox,.sm-overlay').show();
+					$('.sm-overlay,.sum-lightbox .buttons button').click(function(){
+						$('.commentbox,.sm-overlay').hide()
+					})
+				});
+		}
 	};
 
 	
