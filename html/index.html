@@ -59,8 +59,29 @@
 						</div>
 					</div>
 				</div>
-				<div id="details-grid" class="mytask">
-					<div ng-controller="GridCtrl">
+				<!-- toggleClasses: summary / mytask below to details-grid -->
+				<div id="details-grid" class="mytask"> 
+					<div class="header-filter">
+						<div class="filterBy">
+							<span>Filtered By:</span>
+							<ul>
+								<li>Event <i class="fa fa-caret-down"></i></li>
+								<li>Originator Name <i class="fa fa-caret-down"></i></li>
+								<li>Supply Create <i class="fa fa-caret-down"></i></li>
+							</ul>
+						</div>
+						<div class="selectFiltered">
+							<div class="amr-cont">
+								<a class='k-link amr' href='#'>
+									<span kendo-tooltip k-content="'Approve'" k-position="'top'">A</span> 
+									<span kendo-tooltip k-content="'Modify'" k-position="'top'">M</span> 
+									<span kendo-tooltip k-content="'Reject'" k-position="'top'">R</span>
+								</a>
+							</div>
+							<span>Select Filtered</span>
+						</div>
+					</div>
+					<div ng-controller="mytaskGridCtrl" class="mytaskCont">
 						<kendo-grid options="mainGridOptions">
 							<div k-detail-template>
 				                <kendo-tabstrip>
@@ -72,15 +93,60 @@
 					                	<p>test</p>
 					                    <div kendo-grid k-options="detailGridOptions(dataItem)"></div>
 					                </div>
-					                <div>
-					                    <ul>
+					                <div data-uid='#: uid #'>
+					                	<ul>
 					                        <li>test</li>
-					                        <li>test1</li>
-					                        <li>test2{{dataItem.TaskId}}</li>
-					                        <li>test3{{dataItem.HomePhone}}</li>
+					                        <li>test1a</li>
+					                        <li>test2{{dataItem.Attributes[0].name}}</li>
+					                        <li>test3 {{dataItem}}</li>
 					                    </ul>
-					                </div>
+						            </div>
 				                </kendo-tabstrip>
+				            </div>
+						</kendo-grid>
+					</div>
+					<div ng-controller="summaryGridCtrl" class="summaryCont">
+						<kendo-grid options="mainGridOptions">
+							<div k-detail-template>
+								<div class="progress-level-bar">
+									<div class="progress-level first done">
+										<div class="progress-icon">
+											<i class="fa fa-user"></i>
+										</div>
+										<p class="progress-desc">Supplier</p>
+									</div>
+									<div class="progress-level done">
+										<div class="progress-icon">
+											<i class="fa fa-user"></i>
+										</div>
+										<div class="progress-pipe"></div>
+										<p class="progress-desc">Buyer</p>
+									</div>
+									<div class="progress-level done now">
+										<div class="progress-icon">
+											<i class="fa fa-user"></i>
+										</div>
+										<div class="progress-pipe"></div>	
+										<p class="progress-desc">Replenishment</p>
+									</div>
+									<div class="progress-level">
+										<div class="progress-icon">
+											<i class="fa fa-user"></i>
+										</div>
+										<div class="progress-pipe"></div>
+										<p class="progress-desc">Procurement</p>
+									</div>
+				                </div>
+				                <div class="status"> <!-- addClass "complete" -->
+				                	<div class="inProgressMsg">
+				                		<p class="ipText">In-Progress</p>
+				                		<p class="ipStatus">Replenishment</p>
+				                	</div>
+				                	<div class="completeMsg">
+				                		<i class="fa fa-check"></i>
+				                		<p class="ipStatus">Complete</p>
+				                	</div>
+				                </div>
 				            </div>
 						</kendo-grid>
 					</div>

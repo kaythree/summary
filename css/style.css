@@ -16,6 +16,9 @@ body{
     clear: both;
     border-top: 3px solid #F47421;
 }
+#summary-page #details-grid.mytask {
+  border-top: 3px solid #10528E;
+}
 #summary-page .sd-block {
     color: #fff;
     overflow: hidden;
@@ -76,6 +79,7 @@ body{
 #summary-page .approval-buttons {
     float: right;
     margin: 10px;
+    clear: both;
 }
 #summary-page .approval-buttons .app-button {
     border: 1px solid #ddd;
@@ -214,12 +218,15 @@ body{
 
 #details-grid .k-pager-innerwrap {
   float:right;
+  clear: both;
+  /* width: 100%; */
 }
 #details-grid .k-pager-wrap .k-pager-nav {
    border: 1px solid #ccc;
-  margin: 2px 4px;
-  border-radius: 6px;
-  padding-bottom: 2px;
+   margin: 2px 4px;
+   border-radius: 6px;
+   padding-bottom: 2px;
+   /* clear: both; */
 }
 #details-grid .k-pager-numbers {
   float: none;
@@ -311,7 +318,7 @@ body{
     padding: 0px 3px;
 }
 
-#summary-page .k-grid-header th.k-header .k-icon {
+#summary-page .k-grid-header th.k-header .k-icon.k-filter {
   background-position: 0 -35px;
 }
 
@@ -401,4 +408,173 @@ body{
     color: #fff;
     background: #DF7F3A;
     border-color: #DF7F3A;
+}
+
+
+#details-grid.mytask .summaryCont, #details-grid.summary .mytaskCont  {
+  display: none;
+}
+#details-grid.summary .k-master-row .k-hierarchy-cell .k-icon {
+  display: none;
+}
+#details-grid .progress-level {
+    float: left;
+    text-align: center;
+    width: 25%;
+    display: inline-block;
+    margin-top: 10px;
+    position: relative;
+    opacity: 0.99;
+}
+
+#details-grid .progress-level .progress-icon {
+    background: #fff;
+    display: inline-block;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    color: #99C9F8;
+    border: 1px solid #ccc;
+}
+
+#details-grid .progress-level-bar {
+    width: 80%;
+    float: left;
+}
+#details-grid .status {
+    width: 10%;
+    float: right;
+    text-align: center;
+    border-left: 1px solid #efefef;
+}
+
+#details-grid .status .completeMsg {
+    display: none;
+}
+#details-grid .k-state-selected + .k-detail-row .status {
+  border-left: 0;
+}
+#details-grid .status .ipText {
+    margin: 10px 0 0;
+}
+
+#details-grid .status .ipStatus {
+    font-weight: bold;
+    color: green;
+}
+#details-grid .status.complete .completeMsg {
+    display: block;
+    color: #fff;
+    background: green;
+}
+
+#details-grid .status.complete .completeMsg .ipStatus {
+    color: #fff;
+    font-weight: normal;
+    padding-bottom: 12px;
+    margin: 0;
+}
+
+#details-grid .status.complete .completeMsg .fa {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+#details-grid .status.complete .inProgressMsg {
+    display: none;
+}
+
+#details-grid .progress-level.done .progress-icon {
+    background: green;
+    border-color: green;
+    color: #fff;
+}
+
+#details-grid .k-grid-header .k-header-column-menu .k-i-arrowhead-s {
+  background-position: 0 -35px;
+}
+#details-grid .progress-pipe {
+    width: 96%;
+    height: 10px;
+    right: 49%;
+    top: 7px;
+    z-index: -1;
+    position: absolute;
+    border: 1px solid #ccc;
+    border-left: transparent;
+}
+#details-grid .progress-level.done {
+    color: green;
+}
+
+#details-grid .progress-level.done.now {
+    font-weight: bold;
+}
+#details-grid .k-state-selected + .k-detail-row .progress-level.done .progress-icon {
+    background: #0F4D8D;
+    border-color: #0F4D8D;
+}
+#details-grid .k-state-selected + .k-detail-row .progress-level.done {
+    color: #0F4D8D;
+}
+#details-grid .done .progress-pipe {
+    background: green;
+    border-color: green;
+    right: 50%;
+}
+#details-grid .k-menu .k-animation-container .k-menu-group {
+    padding: 0;
+}
+#details-grid .k-state-selected + .k-detail-row .done .progress-pipe {
+    background: #0F4D8D;
+    border-color: #0F4D8D;
+}
+.summary .k-pager-wrap {
+  display: none;
+}
+.k-animation-container .k-popup {
+    border-width: 0
+}
+#details-grid .attribute-item {
+   display: inline-block;
+   width: 30%;
+   margin: 10px;
+}
+#details-grid .header-filter {
+    background-color: #e5e5e5;
+    height: 27px;
+    padding: 10px 5px;
+}
+#details-grid .filterBy {
+    float: left;
+    margin-top: 3px;
+}
+#details-grid .filterBy span {
+    float: left;
+}
+#details-grid .filterBy > ul > li {
+    float: left;
+    list-style: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+#details-grid .filterBy ul {
+    display: inline;
+}
+
+#details-grid .selectFiltered {
+    float: right;
+}
+
+#details-grid .selectFiltered .amr-cont {
+    display: inline-block;
+}
+#details-grid .k-widget.k-header:after {
+    content: "a";
+    position: absolute;
+    top: -15px;
+    left: 10px;
+    background: #fff;
 }
