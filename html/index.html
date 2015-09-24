@@ -14,146 +14,32 @@
 	</head>
 	<body ng-controller="SummaryController" ng-init="init()">
 		<div class="main-container" id="summary-page">
-			<h2 class="page-title">Summary</h2>
-			<ul class="amr-block">
-				<li>
-					<span class="amr-icon">A</span>
-					<span class="amr-desc">Approve</span>
-				</li>
-				<li>
-					<span class="amr-icon">M</span>
-					<span class="amr-desc">Modify</span>
-				</li>
-				<li>
-					<span class="amr-icon">R</span>
-					<span class="amr-desc">Reject</span>
-				</li>
-			</ul>
 			<div class="content-container">
-				<div class="status-blocks-cont">
-					<div class="sd-block mytask active">
-						<div class="sd-block-content">
-							<span class="sbc-val">200</span>
-							<span class="sbc-type">My Task</span>
-						</div>
-						<div class="sd-block-icon">
-							<i class="fa fa-user"></i>
-						</div>
-					</div>
-					<div class="sd-block complete">
-						<div class="sd-block-content">
-							<span class="sbc-val">30</span>
-							<span class="sbc-type">Complete</span>
-						</div>
-						<div class="sd-block-icon">
-							<i class="fa fa-check"></i>
-						</div>
-					</div>
-					<div class="sd-block summary">
-						<div class="sd-block-content">
-							<span class="sbc-val">50</span>
-							<span class="sbc-type">Summary</span>
-						</div>
-						<div class="sd-block-icon">
-							<i class="fa fa-clock-o"></i>
-						</div>
-					</div>
-				</div>
+				
 				<!-- toggleClasses: summary / mytask below to details-grid -->
 				<div id="details-grid" class="mytask"> 
-					<div class="header-filter">
-						<div class="filterBy">
-							<span>Filtered By:</span>
-							<ul>
-								<li>Event <i class="fa fa-caret-down"></i></li>
-								<li>Originator Name <i class="fa fa-caret-down"></i></li>
-								<li>Supply Create <i class="fa fa-caret-down"></i></li>
-							</ul>
-						</div>
-						<div class="selectFiltered">
-							<div class="amr-cont">
-								<a class='k-link amr' href='#'>
-									<span kendo-tooltip k-content="'Approve'" k-position="'top'">A</span> 
-									<span kendo-tooltip k-content="'Modify'" k-position="'top'">M</span> 
-									<span kendo-tooltip k-content="'Reject'" k-position="'top'">R</span>
-								</a>
-							</div>
-							<span>Select Filtered</span>
-						</div>
-					</div>
 					<div ng-controller="mytaskGridCtrl" class="mytaskCont">
 						<kendo-grid options="mainGridOptions">
 							<div k-detail-template>
-				                <kendo-tabstrip>
-					                <ul class="subGridMenu">
-					                    <li class="comment-btn">Comment</li>
-					                    <li class="k-state-active">Attributes</li>
-					                </ul>
-					                <div>
-					                	<p>test</p>
-					                    <div kendo-grid k-options="detailGridOptions(dataItem)"></div>
-					                </div>
-					                <div data-uid='#: uid #'>
-					                	<ul>
-					                        <li>test</li>
-					                        <li>test1a</li>
-					                        <li>test2{{dataItem.Attributes[0].name}}</li>
-					                        <li>test3 {{dataItem}}</li>
-					                    </ul>
-						            </div>
-				                </kendo-tabstrip>
-				            </div>
-						</kendo-grid>
-					</div>
-					<div ng-controller="summaryGridCtrl" class="summaryCont">
-						<kendo-grid options="mainGridOptions">
-							<div k-detail-template>
-								<div class="progress-level-bar">
-									<div class="progress-level first done">
-										<div class="progress-icon">
-											<i class="fa fa-user"></i>
-										</div>
-										<p class="progress-desc">Supplier</p>
-									</div>
-									<div class="progress-level done">
-										<div class="progress-icon">
-											<i class="fa fa-user"></i>
-										</div>
-										<div class="progress-pipe"></div>
-										<p class="progress-desc">Buyer</p>
-									</div>
-									<div class="progress-level done now">
-										<div class="progress-icon">
-											<i class="fa fa-user"></i>
-										</div>
-										<div class="progress-pipe"></div>	
-										<p class="progress-desc">Replenishment</p>
-									</div>
-									<div class="progress-level">
-										<div class="progress-icon">
-											<i class="fa fa-user"></i>
-										</div>
-										<div class="progress-pipe"></div>
-										<p class="progress-desc">Procurement</p>
-									</div>
-				                </div>
-				                <div class="status"> <!-- addClass "complete" -->
-				                	<div class="inProgressMsg">
-				                		<p class="ipText">In-Progress</p>
-				                		<p class="ipStatus">Replenishment</p>
-				                	</div>
-				                	<div class="completeMsg">
-				                		<i class="fa fa-check"></i>
-				                		<p class="ipStatus">Complete</p>
+				                <div class="group-details">
+				                	<div class="individual-group">
+				                		<span class="col2">Group</span>
+				              			<span class="col3"><input type="checkbox" name=""></span>
+				              			<span class="clo4"><input type="checkbox" name=""></span>
+				              			<span class="col5"><input type="checkbox" name=""></span>
+				              			<span class="col6"><input type="checkbox" name=""></span>
+				              			<span class="col7"><input type="checkbox" name=""></span>
+				              			<span class="col8">X</span>
 				                	</div>
 				                </div>
 				            </div>
 						</kendo-grid>
 					</div>
+					
 				</div>
 				<div class="approval-buttons">
 					<a href="#" class="app-button approve">
-						<span class="app-text">Submit</span>
+						<span class="app-text active">Submit</span>
 					</a>
 				</div>
 			</div>

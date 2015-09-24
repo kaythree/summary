@@ -20,51 +20,36 @@ accordian.controller("SummaryController" , function($scope){
 });
 
 grid.controller("mytaskGridCtrl", function($scope){
-	$scope.tooltipOpt = {"a":"Approve", "m":"Modify", "r":"Reject", "position":"top"};
 	$scope.mainGridOptions = {
 		dataSource: [ 
-					{ ProcessId: "123456789876456",
-					 Description: "Description Info Here",
-					 Originator: "Originator Name",
-					 Concept: "Offer",
-					 Type: "Originator Name",
-					 DateTime: "Originator Name"
-					},
-					{ ProcessId: "123456789876456",
-					 Description: "Description Info Here",
-					 Originator: "Originator Name",
-					 Concept: "Offer",
-					 Type: "Originator Name",
-					 DateTime: "Originator Name"
-					},
-					{ ProcessId: "123456789876456",
-					 Description: "Description Info Here",
-					 Originator: "Originator Name",
-					 Concept: "Offer",
-					 Type: "Originator Name",
-					 DateTime: "Originator Name"
-					},
-					{ ProcessId: "123456789876456",
-					 Description: "Description Info Here",
-					 Originator: "Originator Name",
-					 Concept: "Offer",
-					 Type: "Originator Name",
-					 DateTime: "Originator Name"
-					},
-					{ ProcessId: "123456789876456",
-					 Description: "Description Info Here",
-					 Originator: "Originator Name",
-					 Concept: "Offer",
-					 Type: "Originator Name",
-					 DateTime: "Originator Name"
-					},
-					{ ProcessId: "123456789876456",
-					 Description: "Description Info Here",
-					 Originator: "Originator Name",
-					 Concept: "Offer",
-					 Type: "Originator Name",
-					 DateTime: "Originator Name"
-					}],
+						{ 
+							User: "User 1",
+						 	Groups: "Group1 , Group2, Group3, Group4",
+						 	View: "",
+						 	Edit: "",
+						 	Create: "",
+						 	Reject: "",
+						 	Approve: ""
+						},
+						{ 
+							User: "User 2",
+						 	Groups: "Group5 , Group6, Group7, Group8",
+						 	View: "",
+						 	Edit: "",
+						 	Create: "",
+						 	Reject: "",
+						 	Approve: ""
+						},
+						{ 
+							User: "User 3",
+						 	Groups: "Group5 , Group6, Group7, Group8",
+						 	View: "",
+						 	Edit: "",
+						 	Create: "",
+						 	Reject: "",
+						 	Approve: ""
+						}
+				],
 		height: 180,
 		sortable: true,
 		selectable: "row",
@@ -92,31 +77,27 @@ grid.controller("mytaskGridCtrl", function($scope){
 		},
 		columns: [
 		{
-			title: "<a class='k-link amr' href='#'><span kendo-tooltip k-content='tooltipOpt.a' k-position='tooltipOpt.position'>A</span> <span kendo-tooltip k-content='tooltipOpt.m' k-position='tooltipOpt.position'>M</span> <span kendo-tooltip k-content='tooltipOpt.r' k-position='tooltipOpt.position'>R</span></a>",
-			template: "<div class='amr-checks'><input type='checkbox' class='scheck'> <input type='checkbox' class='scheck'> <input type='checkbox' class='scheck'></div>",
-		},
-		{
-			field: "ProcessId",
-			title: "ProcessId",
+			field: "User",
+			title: "User",
 			width: 200
 		}, {
-			field: "Description",
-			title: "Description"
+			field: "Groups",
+			title: "Groups"
 		}, {
-			field: "Originator",
-			title: "Originator"
+			field: "View",
+			title: "View"
 		}, {
-			field: "Description",
-			title: "Description"
+			field: "Edit",
+			title: "Edit"
 		}, {
-			field: "Concept",
-			title: "Concept"
+			field: "Create",
+			title: "Create"
 		}, {
-			field: "Type",
-			title: "Type"
+			field: "Reject",
+			title: "Reject"
 		}, {
-			field: "DateTime",
-			title: "Date / Time"
+			field: "Approve",
+			title: "Approve"
 		}],
 		dataBinding: function(e) {
 				var $pagerRefresh = $('.k-pager-refresh').clone();
