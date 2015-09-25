@@ -20,6 +20,7 @@ accordian.controller("SummaryController" , function($scope){
 });
 
 grid.controller("mytaskGridCtrl", function($scope){
+	$scope.crossMark = "<span class='cross-mark'></span>";
 	$scope.mainGridOptions = {
 		dataSource: [ 
 						{ 
@@ -30,6 +31,7 @@ grid.controller("mytaskGridCtrl", function($scope){
 						 	Create: "",
 						 	Reject: "",
 						 	Approve: ""
+
 						},
 						{ 
 							User: "User 2",
@@ -79,25 +81,37 @@ grid.controller("mytaskGridCtrl", function($scope){
 		{
 			field: "User",
 			title: "User",
-			width: 200
+			width: 100
 		}, {
 			field: "Groups",
-			title: "Groups"
+			title: "Groups",
+			width: 250
 		}, {
 			field: "View",
-			title: "View"
+			title: "View",
+			width: 150
 		}, {
 			field: "Edit",
-			title: "Edit"
+			title: "Edit",
+			width: 100
 		}, {
 			field: "Create",
-			title: "Create"
+			title: "Create",
+			width: 150
 		}, {
 			field: "Reject",
-			title: "Reject"
+			title: "Reject",
+			width: 150
 		}, {
 			field: "Approve",
-			title: "Approve"
+			title: "Approve",
+			width: 150
+		},
+		{
+			field: " ",
+			title: " ",
+			width: 	100,
+			template:kendo.template($scope.crossMark)
 		}],
 		dataBinding: function(e) {
 				var $pagerRefresh = $('.k-pager-refresh').clone();
@@ -125,6 +139,16 @@ grid.controller("mytaskGridCtrl", function($scope){
 						$('.commentbox,.sm-overlay').hide()
 					})
 				});
+
+				$grid.on('click','.show-more-details', function(){
+					console.log($(this).parent(".dropdown").siblings(".more-details"));
+					if($(this).parent(".dropdown").siblings(".more-details").css('display') == 'none'){
+						$(this).parent(".dropdown").siblings(".more-details").show();
+					}
+					else{
+						$(this).parent(".dropdown").siblings(".more-details").hide();
+					}
+				})
 		}
 	};
 
