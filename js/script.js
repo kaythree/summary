@@ -20,38 +20,51 @@ accordian.controller("SummaryController" , function($scope){
 });
 
 grid.controller("mytaskGridCtrl", function($scope){
-	$scope.crossMark = "<span class='cross-mark'></span>";
+	$scope.tooltipOpt = {"a":"Approve", "m":"Modify", "r":"Reject", "position":"top"};
 	$scope.mainGridOptions = {
 		dataSource: [ 
-						{ 
-							User: "User 1",
-						 	Groups: "Group1 , Group2, Group3, Group4",
-						 	View: "",
-						 	Edit: "",
-						 	Create: "",
-						 	Reject: "",
-						 	Approve: ""
-
-						},
-						{ 
-							User: "User 2",
-						 	Groups: "Group5 , Group6, Group7, Group8",
-						 	View: "",
-						 	Edit: "",
-						 	Create: "",
-						 	Reject: "",
-						 	Approve: ""
-						},
-						{ 
-							User: "User 3",
-						 	Groups: "Group5 , Group6, Group7, Group8",
-						 	View: "",
-						 	Edit: "",
-						 	Create: "",
-						 	Reject: "",
-						 	Approve: ""
-						}
-				],
+					{ ProcessId: "123456789876456",
+					 Description: "Description Info Here",
+					 Originator: "Originator Name",
+					 Concept: "Offer",
+					 Type: "Originator Name",
+					 DateTime: "Originator Name"
+					},
+					{ ProcessId: "123456789876456",
+					 Description: "Description Info Here",
+					 Originator: "Originator Name",
+					 Concept: "Offer",
+					 Type: "Originator Name",
+					 DateTime: "Originator Name"
+					},
+					{ ProcessId: "123456789876456",
+					 Description: "Description Info Here",
+					 Originator: "Originator Name",
+					 Concept: "Offer",
+					 Type: "Originator Name",
+					 DateTime: "Originator Name"
+					},
+					{ ProcessId: "123456789876456",
+					 Description: "Description Info Here",
+					 Originator: "Originator Name",
+					 Concept: "Offer",
+					 Type: "Originator Name",
+					 DateTime: "Originator Name"
+					},
+					{ ProcessId: "123456789876456",
+					 Description: "Description Info Here",
+					 Originator: "Originator Name",
+					 Concept: "Offer",
+					 Type: "Originator Name",
+					 DateTime: "Originator Name"
+					},
+					{ ProcessId: "123456789876456",
+					 Description: "Description Info Here",
+					 Originator: "Originator Name",
+					 Concept: "Offer",
+					 Type: "Originator Name",
+					 DateTime: "Originator Name"
+					}],
 		height: 180,
 		sortable: true,
 		selectable: "row",
@@ -79,39 +92,31 @@ grid.controller("mytaskGridCtrl", function($scope){
 		},
 		columns: [
 		{
-			field: "User",
-			title: "User",
-			width: 100
-		}, {
-			field: "Groups",
-			title: "Groups",
-			width: 250
-		}, {
-			field: "View",
-			title: "View",
-			width: 150
-		}, {
-			field: "Edit",
-			title: "Edit",
-			width: 100
-		}, {
-			field: "Create",
-			title: "Create",
-			width: 150
-		}, {
-			field: "Reject",
-			title: "Reject",
-			width: 150
-		}, {
-			field: "Approve",
-			title: "Approve",
-			width: 150
+			title: "<a class='k-link amr' href='#'><span kendo-tooltip k-content='tooltipOpt.a' k-position='tooltipOpt.position'>A</span> <span kendo-tooltip k-content='tooltipOpt.m' k-position='tooltipOpt.position'>M</span> <span kendo-tooltip k-content='tooltipOpt.r' k-position='tooltipOpt.position'>R</span></a>",
+			template: "<div class='amr-checks'><input type='checkbox' class='scheck'> <input type='checkbox' class='scheck'> <input type='checkbox' class='scheck'></div>",
 		},
 		{
-			field: " ",
-			title: " ",
-			width: 	100,
-			template:kendo.template($scope.crossMark)
+			field: "ProcessId",
+			title: "ProcessId",
+			width: 500
+		}, {
+			field: "Description",
+			title: "Description"
+		}, {
+			field: "Originator",
+			title: "Originator"
+		}, {
+			field: "Description",
+			title: "Description"
+		}, {
+			field: "Concept",
+			title: "Concept"
+		}, {
+			field: "Type",
+			title: "Type"
+		}, {
+			field: "DateTime",
+			title: "Date / Time"
 		}],
 		dataBinding: function(e) {
 				var $pagerRefresh = $('.k-pager-refresh').clone();
@@ -139,16 +144,6 @@ grid.controller("mytaskGridCtrl", function($scope){
 						$('.commentbox,.sm-overlay').hide()
 					})
 				});
-
-				$grid.on('click','.show-more-details', function(){
-					console.log($(this).parent(".dropdown").siblings(".more-details"));
-					if($(this).parent(".dropdown").siblings(".more-details").css('display') == 'none'){
-						$(this).parent(".dropdown").siblings(".more-details").show();
-					}
-					else{
-						$(this).parent(".dropdown").siblings(".more-details").hide();
-					}
-				})
 		}
 	};
 
